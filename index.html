@@ -13,6 +13,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
     <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
 
+
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Hello, world!</title>
 </head>
@@ -60,9 +61,9 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Los Angeles</li>
+                    <li class="list-group-item">New York</li>
+                    <li class="list-group-item">San Francisco</li>
                     <li class="list-group-item">Porta ac consectetur ac</li>
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
@@ -72,10 +73,10 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body card-special">
-                                <h5 class="card-title">Special title treatment</h5>
-
-                                <canvas id="canvas" width="400" height="400">
-                                </canvas>
+                                <h5 class="card-title" id="city_name_h5">Special title treatment</h5>
+                                <div id="city_info"></div>
+                                <!-- <canvas id="canvas" width="400" height="400">
+                                </canvas> -->
 
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
@@ -84,7 +85,7 @@
                 </div>
                 <br>
                 <h5>5-Day Forecast</h5>
-                <div class="row">
+                <div class="row" id="forecast_container">
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
@@ -125,6 +126,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -137,7 +141,8 @@
         var c = moment().format("LLLL");
         $("#title_section").text('HELLO ' + c);
     </script>
-    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
+    <script src="./assets/js/weather.js"></script>
 
 </body>
 
