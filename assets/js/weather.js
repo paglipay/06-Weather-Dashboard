@@ -5,7 +5,9 @@ $(document).ready(function () {
 
     $('#clock_btn').click(function () {
         event.preventDefault();
-        console.log('HELLO?')
+        console.log('HELLO?');
+        $('#canvas').attr('width', '500');
+        $('#canvas').attr('height', '500');
         renderClock();
     });
 
@@ -51,10 +53,14 @@ var renderWeather = name => {
                 var card_header = $('<h5>').addClass('card-title').text(response.daily[i].weather[0].main);
                 var temp_temp = ((response.daily[i].temp.day - 273.15) * 1.8) + 32 //((K-273.15)*1.8)+32
                 var card_text = $('<p>').addClass('card-text').text('Temp: ' + temp_temp.toFixed(2) + ' F');
+                var mydate = "2017-06-28T00:00:00";
+                var weekDayName = moment().add(i, 'day').format('ddd');
+                console.log(weekDayName);
 
                 var card_body = $('<div>').addClass('card-body');
                 card_body.append(card_header);
                 card_body.append(card_text);
+                card_body.append(weekDayName);
 
 
                 $('#forecast_container').append($('<div>')
