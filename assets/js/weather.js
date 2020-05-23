@@ -1,8 +1,28 @@
 // A $( document ).ready() block.
 $(document).ready(function () {
     console.log("ready!");
+    renderWeather('Los Angeles');
 
-    url_var = 'https://api.openweathermap.org/data/2.5/weather?q=Los Angeles&appid=aff4268b5009fde02d6331d776dde947'
+    $('#clock_btn').click(function () {
+        event.preventDefault();
+        console.log('HELLO?')
+        renderClock();
+    });
+
+    var listEl = document.querySelector("#cities-list");
+    listEl.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (event.target.matches("a")) {
+            console.log(event.target.id);
+            renderWeather(event.target.id);
+        }
+    });
+
+
+});
+
+var renderWeather = name => {
+    url_var = 'https://api.openweathermap.org/data/2.5/weather?q=' + name + '&appid=aff4268b5009fde02d6331d776dde947'
     $.ajax({
         url: url_var,
         method: "GET"
@@ -11,7 +31,8 @@ $(document).ready(function () {
         console.log(response.coord.lat);
         console.log(response.coord.lon);
         $('#city_name_h5').text(response.name)
-        var temp_temp = ((response.main.temp-273.15) * 1.8 ) + 32 //((K-273.15)*1.8)+32
+        var temp_temp = ((response.main.temp - 273.15) * 1.8) + 32 //((K-273.15)*1.8)+32
+        $('#city_info').empty();
         $('#city_info').append($('<p>').text('Temperature: ' + temp_temp.toFixed(2) + ' F'));
         $('#city_info').append($('<p>').text('Humidity: ' + response.main.humidity));
         $('#city_info').append($('<p>').text('Wind Speed: ' + response.wind.speed + ' MPH'));
@@ -28,7 +49,7 @@ $(document).ready(function () {
 
             for (var i = 0; i < 6; i++) {
                 var card_header = $('<h5>').addClass('card-title').text(response.daily[i].weather[0].main);
-                var temp_temp = ((response.daily[i].temp.day-273.15) * 1.8 ) + 32 //((K-273.15)*1.8)+32
+                var temp_temp = ((response.daily[i].temp.day - 273.15) * 1.8) + 32 //((K-273.15)*1.8)+32
                 var card_text = $('<p>').addClass('card-text').text('Temp: ' + temp_temp.toFixed(2) + ' F');
 
                 var card_body = $('<div>').addClass('card-body');
@@ -45,4 +66,4 @@ $(document).ready(function () {
 
         });
     });
-});
+}
